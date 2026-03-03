@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercise 4.1 - SVG House</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .wrap { max-width: 900px; margin: 24px auto; }
+    svg { border: 2px solid #111; display: block; margin: 12px 0; }
+    .caption { color: #444; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Exercise 4.1: Draw SVGs</h1>
+    <p class="caption">House + garden using SVG primitives + grouped windows.</p>
+
+    <!-- SVG canvas -->
+    <svg width="640" height="640" viewBox="0 0 640 640" role="img" aria-label="House and garden scene">
+      <!-- Sky (rect) -->
+      <rect x="0" y="0" width="640" height="420" fill="#8fd0f2"></rect>
+
+      <!-- Grass (rect) -->
+      <rect x="0" y="420" width="640" height="220" fill="#0b7a11"></rect>
+
+      <!-- Sun (circle) -->
+      <circle cx="540" cy="120" r="55" fill="yellow"></circle>
+
+      <!-- Tree trunk (rect) -->
+      <rect x="95" y="380" width="35" height="150" fill="#b06a2f"></rect>
+
+      <!-- Tree leaves (ellipse) -->
+      <ellipse cx="110" cy="360" rx="55" ry="45" fill="#1f7f1f"></ellipse>
+      <ellipse cx="150" cy="360" rx="45" ry="40" fill="#1f7f1f"></ellipse>
+
+      <!-- House body (rect) -->
+      <rect x="210" y="300" width="260" height="240" fill="#7a3f14"></rect>
+
+      <!-- Roof (polygon) -->
+      <polygon points="340,170 210,300 470,300" fill="#c97b2b"></polygon>
+
+      <!-- Door (rect) -->
+      <rect x="315" y="400" width="70" height="140" fill="#8a4b2a"></rect>
+
+      <!-- Door knob (circle) -->
+      <circle cx="368" cy="470" r="6" fill="#111"></circle>
+
+      <!-- Windows group: one style, two windows, positioned by translate -->
+      <g id="windows" fill="#bfe4ef" stroke="#5b3312" stroke-width="4">
+        <!-- left window -->
+        <rect x="0" y="0" width="60" height="60"></rect>
+
+        <!-- right window (same shape, moved using translate) -->
+        <rect x="0" y="0" width="60" height="60" transform="translate(140, 0)"></rect>
+
+        <!-- Position the whole group on the house -->
+        <!-- (this transform applies to BOTH windows together) -->
+        <!-- NOTE: transform order matters; here we just translate the group -->
+        <animate attributeName="opacity" from="1" to="1" dur="0.1s" fill="freeze"/>
+      </g>
+
+      <!-- Apply translate to the group via a second wrapper group (cleaner to read) -->
+      <g transform="translate(250, 350)">
+        <!-- reuse the windows group by duplicating its content (simple + clear for marking) -->
+        <g fill="#bfe4ef" stroke="#5b3312" stroke-width="4">
+          <rect x="0" y="0" width="60" height="60"></rect>
+          <rect x="0" y="0" width="60" height="60" transform="translate(140, 0)"></rect>
+        </g>
+      </g>
+
+      <!-- Path road (two curved yellow paths) -->
+      <path d="M 340 540
+               C 330 520, 315 510, 290 495
+               C 245 470, 215 450, 205 420"
+            fill="none" stroke="#f4b000" stroke-width="6"></path>
+
+      <path d="M 360 540
+               C 350 520, 335 510, 310 495
+               C 265 470, 235 450, 225 420"
+            fill="none" stroke="#f4b000" stroke-width="6"></path>
+
+      <!-- A simple line example (line) for “horizon” -->
+      <line x1="0" y1="420" x2="640" y2="420" stroke="#0a5d0e" stroke-width="3"></line>
+
+      <!-- Label (text) -->
+      <text x="500" y="470" font-size="28" fill="#111">House</text>
+
+      <!-- Optional: a small “ground shadow” (ellipse) -->
+      <ellipse cx="340" cy="545" rx="140" ry="18" fill="rgba(0,0,0,0.12)"></ellipse>
+    </svg>
+
+    <h2>What shapes I used</h2>
+    <ul>
+      <li><strong>rect</strong>: sky, grass, house body, trunk, door, windows</li>
+      <li><strong>circle</strong>: sun, door knob</li>
+      <li><strong>ellipse</strong>: tree leaves, shadow</li>
+      <li><strong>polygon</strong>: roof</li>
+      <li><strong>line</strong>: horizon line</li>
+      <li><strong>path</strong>: curved road</li>
+      <li><strong>text</strong>: “House” label</li>
+    </ul>
+
+    <p class="caption">
+      Next: take screenshots, annotate coordinates, add images + DOM screenshot to this page.
+    </p>
+  </div>
+</body>
+</html>
