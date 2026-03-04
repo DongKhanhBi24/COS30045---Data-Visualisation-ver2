@@ -17,85 +17,86 @@
     <p class="caption">House and garden scene.</p>
 
     <svg width="640" height="640" viewBox="0 0 640 640" role="img" aria-label="House and garden scene">
-      <!-- Sky, grass  -->
+      <!-- Sky, grass, tree trunk  -->
       <rect x="0" y="0" width="640" height="420" fill="#8fd0f2"></rect>
       <rect x="0" y="420" width="640" height="220" fill="#0b7a11"></rect>
-
-      <!-- Sun  -->
-      <circle cx="540" cy="120" r="55" fill="yellow"></circle>
-
-      <!-- Tree trunk (rect) -->
       <rect x="95" y="380" width="35" height="150" fill="#b06a2f"></rect>
 
-      <!-- Tree leaves (ellipse) -->
-      <ellipse cx="110" cy="360" rx="55" ry="45" fill="#1f7f1f"></ellipse>
-      <ellipse cx="150" cy="360" rx="45" ry="40" fill="#1f7f1f"></ellipse>
-
-      <!-- House body (rect) -->
-      <rect x="210" y="300" width="260" height="240" fill="#7a3f14"></rect>
-
-      <!-- Roof (polygon) -->
-      <polygon points="340,170 210,300 470,300" fill="#c97b2b"></polygon>
-
-      <!-- Door (rect) -->
+      <!-- House body, door -->
+      <rect x="210" y="302" width="260" height="240"
+            fill="#7a3f14" stroke="#3b1c07" stroke-width="4"></rect>
       <rect x="315" y="400" width="70" height="140" fill="#8a4b2a"></rect>
 
-      <!-- Door knob (circle) -->
+      <!-- Path road (two curved yellow paths) -->
+      <path d="M 280 643
+               C 145 590, 215 550, 315 540"
+            fill="none" stroke="#f4b000" stroke-width="5"></path>
+
+      <path d="M 360 643
+               C 265 580, 295 550, 385 540"
+            fill="none" stroke="#f4b000" stroke-width="5"></path>
+
+      <!-- Sun, door knob  -->
+      <circle cx="540" cy="120" r="55" fill="yellow"></circle>
       <circle cx="368" cy="470" r="6" fill="#111"></circle>
 
-      <!-- Windows group: one style, two windows, positioned by translate -->
-      <g id="windows" fill="#bfe4ef" stroke="#5b3312" stroke-width="4">
-        <!-- left window -->
-        <rect x="0" y="0" width="60" height="60"></rect>
+      <!-- Tree leaves (2), Ground shadow -->
+      <ellipse cx="110" cy="360" rx="55" ry="45" fill="#1f7f1f"></ellipse>
+      <ellipse cx="150" cy="360" rx="45" ry="40" fill="#1f7f1f"></ellipse>
+      <ellipse cx="340" cy="545" rx="140" ry="18" fill="rgba(0,0,0,0.12)"></ellipse>
 
-        <!-- right window (same shape, moved using translate) -->
-        <rect x="0" y="0" width="60" height="60" transform="translate(140, 0)"></rect>
+      <!-- Chimney  -->
+      <rect x="410" y="210" width="35" height="80"
+            fill="pink" stroke="#5c2512" stroke-width="5"></rect>
 
-        <!-- Position the whole group on the house -->
-        <!-- (this transform applies to BOTH windows together) -->
-        <!-- NOTE: transform order matters; here we just translate the group -->
-        <animate attributeName="opacity" from="1" to="1" dur="0.1s" fill="freeze"/>
+      <rect x="405" y="205" width="45" height="15"
+            fill="red" stroke="#5c2512" stroke-width="5"></rect>
+
+      <!-- Roof -->
+      <polygon points="340,170 210,300 470,300"
+               fill="#c97b2b" stroke="#8a4a12" stroke-width="6"></polygon>
+
+      <!-- Clouds -->
+      <g fill="white" opacity="0.9">
+        <ellipse cx="140" cy="110" rx="40" ry="25"></ellipse>
+        <ellipse cx="175" cy="110" rx="50" ry="30"></ellipse>
+        <ellipse cx="215" cy="110" rx="40" ry="25"></ellipse>
+      </g>
+
+      <g fill="white" opacity="0.85">
+        <ellipse cx="360" cy="80" rx="30" ry="18"></ellipse>
+        <ellipse cx="390" cy="80" rx="40" ry="22"></ellipse>
+        <ellipse cx="420" cy="80" rx="30" ry="18"></ellipse>
       </g>
 
       <!-- Apply translate to the group via a second wrapper group (cleaner to read) -->
       <g transform="translate(250, 350)">
         <!-- reuse the windows group by duplicating its content (simple + clear for marking) -->
-        <g fill="#bfe4ef" stroke="#5b3312" stroke-width="4">
-          <rect x="0" y="0" width="60" height="60"></rect>
-          <rect x="0" y="0" width="60" height="60" transform="translate(140, 0)"></rect>
+        <g  stroke="#5b3312" stroke-width="4">
+          <rect x="0" y="0" width="60" height="60" fill="#ff0000"></rect>
+          <rect x="0" y="0" width="60" height="60" fill="yellow" 
+                transform="translate(140, 0)"></rect>
         </g>
       </g>
 
-      <!-- Path road (two curved yellow paths) -->
-      <path d="M 340 540
-               C 330 520, 315 510, 290 495
-               C 245 470, 215 450, 205 420"
-            fill="none" stroke="#f4b000" stroke-width="6"></path>
-
-      <path d="M 360 540
-               C 350 520, 335 510, 310 495
-               C 265 470, 235 450, 225 420"
-            fill="none" stroke="#f4b000" stroke-width="6"></path>
-
-      <!-- A simple line example (line) for “horizon” -->
-      <line x1="0" y1="420" x2="640" y2="420" stroke="#0a5d0e" stroke-width="3"></line>
-
-      <!-- Label (text) -->
-      <text x="500" y="470" font-size="28" fill="#111">House</text>
-
-      <!-- Optional: a small “ground shadow” (ellipse) -->
-      <ellipse cx="340" cy="545" rx="140" ry="18" fill="rgba(0,0,0,0.12)"></ellipse>
+      <!-- Label -->
+      <text x="500" y="470" font-size="22" fill="pink">Vina's House</text>
     </svg>
 
-    <h2>What shapes I used</h2>
+    <h2>Annotated SVG Coordinates</h2>
+    <img src="images/annotated_house.png" width="640">
+    
+    <h2>Picture of DOM and SVG</h2>
+    <img src="images/DOM and SVG.png" width="640">
+
+    <h2>What shapes I used after modification</h2>
     <ul>
-      <li><strong>rect</strong>: sky, grass, house body, trunk, door, windows</li>
+      <li><strong>rect</strong>: sky, grass, house body, tree trunk, door, chimney, windows</li>
       <li><strong>circle</strong>: sun, door knob</li>
-      <li><strong>ellipse</strong>: tree leaves, shadow</li>
+      <li><strong>ellipse</strong>: tree leaves, clouds, ground shadow</li>
       <li><strong>polygon</strong>: roof</li>
-      <li><strong>line</strong>: horizon line</li>
       <li><strong>path</strong>: curved road</li>
-      <li><strong>text</strong>: “House” label</li>
+      <li><strong>text</strong>: “Vina's House” label</li>
     </ul>
   </div>
 </body>
