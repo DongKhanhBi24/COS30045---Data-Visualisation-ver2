@@ -3,7 +3,11 @@ d3.select("h1")
 
 d3.select("div")
   .append("p")
+  .style("color", "red")
+  .style("font-style", "italic")
+  .style("font-size", "25px")
   .text("Purchasing a low energy consumption TV will help with your energy bills!");
+
 
 d3.select("svg") 
   .append("rect")
