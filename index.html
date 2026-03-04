@@ -1,110 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Exercise 4.1 - SVG House</title>
-  <style>
-    body { font-family: Arial, sans-serif; }
-    .wrap { max-width: 900px; margin: 24px auto; }
-    svg { border: 2px solid #111; display: block; margin: 12px 0; }
-    .caption { color: #444; }
-  </style>
+  <meta charset="UTF-8">
+  <title>Energy Consumption - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="wrap">
-    <h1>Exercise 4.1: Draw SVGs</h1>
-    <p class="caption">House and garden scene.</p>
+  <header>
+    <nav>
+    <img src="images/PowerIcon.png" alt="Power Logo" id="logo">
+      <ul>
+        <li><a href="index.html" data-page="index">Home</a></li>
+        <li><a href="television.html" data-page="television">Televisions</a></li>
+        <li><a href="about.html" data-page="about">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <svg width="300" height="300" viewBox="0 0 700 700" aria-label="Excercise 4.2">   </svg>
+  <main>
+  <h1>TV Availability Snapshot (Australia)</h1>
+  <p>
+    This page tells a short data story using the Australian TV dataset (filtered to currently available models).
+    The goal is to help shoppers quickly understand what screen technologies, screen sizes, and brands are most common
+    in the current market.
+  </p>
 
-    <svg width="640" height="640" viewBox="0 0 640 640" role="img" aria-label="House and garden scene">
-      <!-- Sky, grass, tree trunk  -->
-      <rect x="0" y="0" width="640" height="420" fill="#8fd0f2"></rect>
-      <rect x="0" y="420" width="640" height="220" fill="#0b7a11"></rect>
-      <rect x="95" y="380" width="35" height="150" fill="#b06a2f"></rect>
+  <section>
+    <h2>1) Which screen technologies are most common?</h2>
+    <img src="images/q1_screen_tech.png"
+         alt="Bar chart showing frequency of screen technologies currently available in Australia"
+         class="story-img">
 
-      <!-- House body, door -->
-      <rect x="210" y="302" width="260" height="240"
-            fill="#7a3f14" stroke="#3b1c07" stroke-width="4"></rect>
-      <rect x="315" y="400" width="70" height="140" fill="#8a4b2a"></rect>
-
-      <!-- Path road (two curved yellow paths) -->
-      <path d="M 280 643
-               C 145 590, 215 550, 315 540"
-            fill="none" stroke="#f4b000" stroke-width="5"></path>
-
-      <path d="M 360 643
-               C 265 580, 295 550, 385 540"
-            fill="none" stroke="#f4b000" stroke-width="5"></path>
-
-      <!-- Sun, door knob  -->
-      <circle cx="540" cy="120" r="55" fill="yellow"></circle>
-      <circle cx="368" cy="470" r="6" fill="#111"></circle>
-
-      <!-- Tree leaves (2), Ground shadow -->
-      <ellipse cx="110" cy="360" rx="55" ry="45" fill="#1f7f1f"></ellipse>
-      <ellipse cx="150" cy="360" rx="45" ry="40" fill="#1f7f1f"></ellipse>
-      <ellipse cx="340" cy="545" rx="140" ry="18" fill="rgba(0,0,0,0.12)"></ellipse>
-
-      <!-- Chimney  -->
-      <rect x="410" y="210" width="35" height="80"
-            fill="pink" stroke="#5c2512" stroke-width="5"></rect>
-
-      <rect x="405" y="205" width="45" height="15"
-            fill="red" stroke="#5c2512" stroke-width="5"></rect>
-
-      <!-- Roof -->
-      <polygon points="340,170 210,300 470,300"
-               fill="#c97b2b" stroke="#8a4a12" stroke-width="6"></polygon>
-
-      <!-- Clouds -->
-      <g fill="white" opacity="0.9">
-        <ellipse cx="140" cy="110" rx="40" ry="25"></ellipse>
-        <ellipse cx="175" cy="110" rx="50" ry="30"></ellipse>
-        <ellipse cx="215" cy="110" rx="40" ry="25"></ellipse>
-      </g>
-
-      <g fill="white" opacity="0.85">
-        <ellipse cx="360" cy="80" rx="30" ry="18"></ellipse>
-        <ellipse cx="390" cy="80" rx="40" ry="22"></ellipse>
-        <ellipse cx="420" cy="80" rx="30" ry="18"></ellipse>
-      </g>
-
-      <!-- Apply translate to the group via a second wrapper group (cleaner to read) -->
-      <g transform="translate(250, 350)">
-        <!-- reuse the windows group by duplicating its content (simple + clear for marking) -->
-        <g  stroke="#5b3312" stroke-width="4">
-          <rect x="0" y="0" width="60" height="60" fill="#ff0000"></rect>
-          <rect x="0" y="0" width="60" height="60" fill="yellow" 
-                transform="translate(140, 0)"></rect>
-        </g>
-      </g>
-
-      <!-- Label -->
-      <text x="500" y="470" font-size="22" fill="pink">Vina's House</text>
-    </svg>
-
-    <h2>Annotated SVG Coordinates</h2>
-    <img src="images/annotated_house.png" width="640">
-    
-    <h2>Picture of DOM and SVG</h2>
-    <img src="images/DOM and SVG.png" width="640">
-
-    <h2>What shapes I used after modification</h2>
     <ul>
-      <li><strong>rect</strong>: sky, grass, house body, tree trunk, door, chimney, windows</li>
-      <li><strong>circle</strong>: sun, door knob</li>
-      <li><strong>ellipse</strong>: tree leaves, clouds, ground shadow</li>
-      <li><strong>polygon</strong>: roof</li>
-      <li><strong>path</strong>: curved road</li>
-      <li><strong>text</strong>: “Vina's House” label</li>
+      <li><strong>What this shows:</strong> The number of currently available TV models grouped by screen technology.</li>
+      <li><strong>Why it matters:</strong> It helps buyers understand which technologies are widely available and easiest to find.</li>
+      <li><strong>Key finding:</strong> LCD-based TVs dominate the dataset. “LCD (LED)” has 3463 models, compared to 453 for “LCD”
+        and 276 for “OLED”.</li>
     </ul>
-  </div>
-  <!-- D3 library -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
 
-  <!-- Your Exercise 4.2 D3 code -->
-  <script src="js/ex4_2_d3.js"></script>
+    <p class="note">
+      Note: “LCD (LED)” and “LCD” appear as separate categories in the source data, which may reflect naming differences.
+    </p>
+  </section>
+
+  <section>
+    <h2>2) Which screen sizes are most common?</h2>
+    <img src="images/q2_screen_size.png"
+         alt="Bar chart showing frequency of screen size categories currently available"
+         class="story-img">
+
+    <ul>
+      <li><strong>What this shows:</strong> The number of currently available TV models by screen-size category (inches).</li>
+      <li><strong>Why it matters:</strong> Popular size categories usually offer more choice and price points, making shopping easier.</li>
+      <li><strong>Key finding:</strong> Very large screens (70+ inches) are the most frequent category, followed by 65-inch and 55-inch models.
+        Smaller sizes (like 22–24 inches) are much less common.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3) Which brands offer the most different models?</h2>
+    <img src="images/q3_brand_models.png"
+         alt="Bar chart showing number of different models by brand"
+         class="story-img">
+
+    <ul>
+      <li><strong>What this shows:</strong> The number of different models (distinct Model_No) available per brand.</li>
+      <li><strong>Why it matters:</strong> Brands with more models typically provide more variety in size and features.</li>
+      <li><strong>Key finding:</strong> The market has a strong “long tail”: a small number of brands offer many models, and then counts drop
+        off quickly across the remaining brands. Samsung is the largest, followed by Kogan and LG.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Summary</h2>
+    <ul>
+      <li>LCD-based screen technologies dominate the currently available TV market in this dataset.</li>
+      <li>Large screen sizes (especially 70+ inches) appear most frequently, with 65" and 55" also very common.</li>
+      <li>A few major brands provide most of the model variety, followed by many smaller brands with few models each.</li>
+    </ul>
+  </section>
+</main>
+
+  <footer>
+    <p>© 2026 Nguyen | Built with GenAI assistance</p>
+  </footer>
 </body>
 </html>

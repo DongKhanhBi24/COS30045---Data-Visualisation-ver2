@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Energy Consumption - About Us</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="images/PowerIcon.png" alt="Power Logo" id="logo">
+      <ul>
+        <li><a href="index.html" data-page="index">Home</a></li>
+        <li><a href="television.html" data-page="television">Televisions</a></li>
+        <li><a href="about.html" data-page="about">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>About the data</h1>
+    <p>
+      This website presents a short data story about televisions currently available in Australia, focusing on what
+      screen technologies, screen sizes, and brands are most common in the dataset.
+    </p>
+
+    <section class="card">
+    <h2>Data source</h2>
+      <p>
+        The dataset was downloaded from the Australian Government Energy Rating product comparator website
+        (Televisions category):
+        <a href="https://reg.energyrating.gov.au/comparator/product_types/" target="_blank" rel="noopener noreferrer">
+          https://reg.energyrating.gov.au/comparator/product_types/
+        </a>.
+        The data is provided in CSV format and contains product-level information used for comparison.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Data processing</h2>
+      <ul>
+        <li><strong>Imported:</strong> Loaded the CSV into KNIME using a CSV Reader node.</li>
+        <li><strong>Filtered:</strong> Kept records for Australia and limited the analysis to currently available models.</li>
+        <li><strong>Cleaned:</strong> Checked missing values and removed duplicates (keeping the most recent submission where duplicates existed).</li>
+        <li><strong>Standardised:</strong> Cleaned brand names to reduce case/spacing/punctuation variations and mapped known variants to one brand name where needed.</li>
+        <li><strong>Transformed:</strong> Created screen-size categories (in inches) to support comparisons across common size groups.</li>
+        <li><strong>Aggregated:</strong> Built summary tables for the charts (counts by technology, size category, and distinct models by brand).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Privacy</h2>
+      <p>
+        The dataset contains product specification information only (e.g., model identifiers and technical attributes).
+        It does not include personal data, customer records, or any user-tracking information.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Accuracy and limitations</h2>
+      <ul>
+        <li>
+          The dataset is a <strong>snapshot</strong> of products recorded at the time of download and may not reflect current
+          retailer stock levels.
+        </li>
+        <li>
+          Some categories may appear under multiple labels (for example, <strong>LCD</strong> vs <strong>LCD (LED)</strong>),
+          which can affect category counts.
+        </li>
+        <li>
+          Brand names can appear in multiple formats; standardisation reduces this issue, but some ambiguity may remain.
+        </li>
+        <li>
+          Counts represent the number of product entries/models in the dataset, not sales volume or consumer popularity.
+        </li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Ethics</h2>
+      <ul>
+        <li>
+          Findings are presented as patterns in the dataset, not guarantees about every individual model.
+        </li>
+        <li>
+          The website avoids unfair “best/worst brand” claims without controlling for factors such as screen size and technology.
+        </li>
+        <li>
+          Limitations are stated clearly to reduce the risk of misleading interpretation.
+        </li>
+      </ul>
+    </section>
+
+    <p class="note">
+      GenAI declaration is provided in the README file.
+    </p>
+  </main>
+
+
+  <footer>
+    <p>© 2026 Nguyen | Built with GenAI assistance</p>
+  </footer>
+</body>
+</html>

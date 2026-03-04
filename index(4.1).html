@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercise 4.1 - SVG House</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .wrap { max-width: 900px; margin: 24px auto; }
+    svg { border: 2px solid #111; display: block; margin: 12px 0; }
+    .caption { color: #444; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Exercise 4.1: Draw SVGs</h1>
+    <p class="caption">House and garden scene.</p>
+
+    <svg width="300" height="300" viewBox="0 0 700 700" aria-label="Excercise 4.2">   </svg>
+
+    <svg width="640" height="640" viewBox="0 0 640 640" role="img" aria-label="House and garden scene">
+      <!-- Sky, grass, tree trunk  -->
+      <rect x="0" y="0" width="640" height="420" fill="#8fd0f2"></rect>
+      <rect x="0" y="420" width="640" height="220" fill="#0b7a11"></rect>
+      <rect x="95" y="380" width="35" height="150" fill="#b06a2f"></rect>
+
+      <!-- House body, door -->
+      <rect x="210" y="302" width="260" height="240"
+            fill="#7a3f14" stroke="#3b1c07" stroke-width="4"></rect>
+      <rect x="315" y="400" width="70" height="140" fill="#8a4b2a"></rect>
+
+      <!-- Path road (two curved yellow paths) -->
+      <path d="M 280 643
+               C 145 590, 215 550, 315 540"
+            fill="none" stroke="#f4b000" stroke-width="5"></path>
+
+      <path d="M 360 643
+               C 265 580, 295 550, 385 540"
+            fill="none" stroke="#f4b000" stroke-width="5"></path>
+
+      <!-- Sun, door knob  -->
+      <circle cx="540" cy="120" r="55" fill="yellow"></circle>
+      <circle cx="368" cy="470" r="6" fill="#111"></circle>
+
+      <!-- Tree leaves (2), Ground shadow -->
+      <ellipse cx="110" cy="360" rx="55" ry="45" fill="#1f7f1f"></ellipse>
+      <ellipse cx="150" cy="360" rx="45" ry="40" fill="#1f7f1f"></ellipse>
+      <ellipse cx="340" cy="545" rx="140" ry="18" fill="rgba(0,0,0,0.12)"></ellipse>
+
+      <!-- Chimney  -->
+      <rect x="410" y="210" width="35" height="80"
+            fill="pink" stroke="#5c2512" stroke-width="5"></rect>
+
+      <rect x="405" y="205" width="45" height="15"
+            fill="red" stroke="#5c2512" stroke-width="5"></rect>
+
+      <!-- Roof -->
+      <polygon points="340,170 210,300 470,300"
+               fill="#c97b2b" stroke="#8a4a12" stroke-width="6"></polygon>
+
+      <!-- Clouds -->
+      <g fill="white" opacity="0.9">
+        <ellipse cx="140" cy="110" rx="40" ry="25"></ellipse>
+        <ellipse cx="175" cy="110" rx="50" ry="30"></ellipse>
+        <ellipse cx="215" cy="110" rx="40" ry="25"></ellipse>
+      </g>
+
+      <g fill="white" opacity="0.85">
+        <ellipse cx="360" cy="80" rx="30" ry="18"></ellipse>
+        <ellipse cx="390" cy="80" rx="40" ry="22"></ellipse>
+        <ellipse cx="420" cy="80" rx="30" ry="18"></ellipse>
+      </g>
+
+      <!-- Apply translate to the group via a second wrapper group (cleaner to read) -->
+      <g transform="translate(250, 350)">
+        <!-- reuse the windows group by duplicating its content (simple + clear for marking) -->
+        <g  stroke="#5b3312" stroke-width="4">
+          <rect x="0" y="0" width="60" height="60" fill="#ff0000"></rect>
+          <rect x="0" y="0" width="60" height="60" fill="yellow" 
+                transform="translate(140, 0)"></rect>
+        </g>
+      </g>
+
+      <!-- Label -->
+      <text x="500" y="470" font-size="22" fill="pink">Vina's House</text>
+    </svg>
+
+    <h2>Annotated SVG Coordinates</h2>
+    <img src="images/annotated_house.png" width="640">
+    
+    <h2>Picture of DOM and SVG</h2>
+    <img src="images/DOM and SVG.png" width="640">
+
+    <h2>What shapes I used after modification</h2>
+    <ul>
+      <li><strong>rect</strong>: sky, grass, house body, tree trunk, door, chimney, windows</li>
+      <li><strong>circle</strong>: sun, door knob</li>
+      <li><strong>ellipse</strong>: tree leaves, clouds, ground shadow</li>
+      <li><strong>polygon</strong>: roof</li>
+      <li><strong>path</strong>: curved road</li>
+      <li><strong>text</strong>: “Vina's House” label</li>
+    </ul>
+  </div>
+  <!-- D3 library -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- Your Exercise 4.2 D3 code -->
+  <script src="js/ex4_2_d3.js"></script>
+</body>
+</html>
