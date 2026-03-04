@@ -16,3 +16,6 @@ d3.select("svg")
   .attr("width", 200)
   .attr("height", 350)
   .attr("fill", "green");
+
+d3.select("body")
+    .style("background-color", "#f0f0f0");
