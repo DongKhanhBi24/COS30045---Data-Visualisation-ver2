@@ -9,3 +9,12 @@ svg
     .attr("width", 414)
     .attr("height", 16)
     .attr("fill", "blue");
+
+d3.csv("../data/technology_Aus_count.csv", d => {
+  return {
+    tech: d["Screen_Tech"],
+    count: +d["Count(Model_No)"]
+  }
+}) .then(data => {
+  console.log(data);
+});
