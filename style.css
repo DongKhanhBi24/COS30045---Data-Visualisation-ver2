@@ -119,3 +119,10 @@ main {
   color: #444;
   margin-top: 8px;
 }
+
+.responsive-svg-container {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    max-width: 1200px;
+}
