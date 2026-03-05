@@ -1,6 +1,6 @@
 const svg = d3.select(".responsive-svg-container")
     .append("svg")
-      .attr("viewBox", "0 0 1200 1600")
+      .attr("viewBox", "0 0 500 1500")
       .style("border", "1px solid black");
 svg
   .append("rect")
@@ -11,11 +11,11 @@ svg
     .attr("height", 16)
     .attr("fill", "blue");
 
-d3.csv("../data/technology_Aus_count.csv", d => {
+d3.csv("../data/count_models_of_brands.csv", d => {
   return {
-    tech: d["Screen_Tech"],
+    brand: d["Brand_final"],
     count: +d["Count(Model_No)"]
-  }
+    }
 }) .then(data => {
   console.log(data);
   console.log("Length:", data.length);
@@ -28,22 +28,25 @@ d3.csv("../data/technology_Aus_count.csv", d => {
 });
 
 const createBarChart = (data) => {
+  const leftPadding = 70;  // labels
 
-  const barHeight = 60;     
-  const barGap = 20;        // spacing
-  const leftPadding = 100;  // labels
+  const xScale = d3.scaleLinear() 
+  .domain([0, d3.max(data, d => d.count)])
+  .range([0, 500 - leftPadding - 20]); // -20 for right padding
+
+  const yScale = d3.scaleBand() 
+  .domain(data.map(d => d.brand))
+  .range([0, 500])
+  .padding(0.3);
 
   svg
     .selectAll("rect.bar")         
     .data(data)
     .join("rect")
-    .attr("class", d => {
-      console.log(d);
-      return `bar bar-${d.count}`;
-    })
+    .attr("class", d => `bar bar-${d.count}`)
     .attr("x", leftPadding)
-    .attr("y", (d, i) => 100 + i * (barHeight + barGap)) // start at y=100, spaced out by barHeight + barGap
-    .attr("height", barHeight)
-    .attr("width", d => d.count)    
+    .attr("y", d => 50 + yScale(d.brand))
+    .attr("height", yScale.bandwidth())
+    .attr("width", d => xScale(d.count))    
     .attr("fill", "steelblue");
 };
