@@ -17,4 +17,8 @@ d3.csv("../data/technology_Aus_count.csv", d => {
   }
 }) .then(data => {
   console.log(data);
+  console.log("Length:", data.length);
+  console.log("Max:", d3.max(data, d => d.count));
+  console.log("Min:", d3.min(data, d => d.count));
+  console.log("Extent:", d3.extent(data, d => d.count));
 });
