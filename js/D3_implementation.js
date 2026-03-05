@@ -11,7 +11,7 @@ svg
     .attr("height", 16)
     .attr("fill", "blue");
 
-d3.csv("../data/count_models_of_brands.csv", d => {
+d3.csv("data/count_models_of_brands.csv", d => {
   return {
     brand: d["Brand_final"],
     count: +d["Count(Model_No)"]
