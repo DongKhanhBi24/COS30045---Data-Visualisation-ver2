@@ -4,6 +4,7 @@ const svg = d3.select(".responsive-svg-container")
       .style("border", "1px solid black");
 svg
   .append("rect")
+    .attr("class", "test-rect")
     .attr("x", 10)
     .attr("y", 10)
     .attr("width", 414)
@@ -27,5 +28,22 @@ d3.csv("../data/technology_Aus_count.csv", d => {
 });
 
 const createBarChart = (data) => {
-  console.log("Bar chart data:", data);
+
+  const barHeight = 60;     
+  const barGap = 20;        // spacing
+  const leftPadding = 100;  // labels
+
+  svg
+    .selectAll("rect.bar")         
+    .data(data)
+    .join("rect")
+    .attr("class", d => {
+      console.log(d);
+      return `bar bar-${d.count}`;
+    })
+    .attr("x", leftPadding)
+    .attr("y", (d, i) => 100 + i * (barHeight + barGap)) // start at y=100, spaced out by barHeight + barGap
+    .attr("height", barHeight)
+    .attr("width", d => d.count)    
+    .attr("fill", "steelblue");
 };
