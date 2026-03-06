@@ -15,7 +15,7 @@ d3.csv("data/Energy_Star.csv").then(data => {
 
   // X scale (Star Rating)
   const x = d3.scaleLinear()
-    .domain([0, d3.max(data, d => d.star)])
+    .domain([1, d3.max(data, d => d.star)])
     .range([margin.left, width - margin.right]);
 
   // Y scale (Energy consumption)
