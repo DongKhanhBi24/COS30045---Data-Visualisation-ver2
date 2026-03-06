@@ -1,3 +1,4 @@
+(function(){
 const width = 700;
 const height = 450;
 const margin = { top: 30, right: 30, bottom: 50, left: 70 };
@@ -57,3 +58,4 @@ d3.csv("data/Energy_Star.csv").then(data => {
     .attr("r", 4)
     .attr("fill", "steelblue")
 });
+})();
