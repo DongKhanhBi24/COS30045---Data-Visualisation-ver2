@@ -79,12 +79,7 @@ d3.csv("data/Screen_Tech_TV.csv").then(data => {
     legend.append("text")
         .attr("x",18)
         .attr("y",10)
-        .each(function(d) {
-            const text = d3.select(this);
-            text.append("tspan")
-                .attr("font-weight", "bold")
-                .text(d.Screen_Tech);
-        })
-        .style("font-size","14px");
+        .text(d=>`${d.Screen_Tech} (${d.count})`)
+        .style("font-size","12px");
 });
 })();

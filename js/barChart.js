@@ -2,7 +2,7 @@
 
 const width = 700;
 const height = 450;
-const margin = {top:40, right:30, bottom:60, left:80};
+const margin = {top:40, right:150, bottom:60, left:80};
 
 const svg = d3.select("#barChart")
   .append("svg")
@@ -15,6 +15,11 @@ d3.csv("data/TV_most_Energy.csv").then(data => {
     d.energy = +d["Mean(Labelled energy consumption (kWh/year))"];
   });
 
+  // consistent colour scale (same as donut chart)
+  const color = d3.scaleOrdinal()
+    .domain(["LCD","LCD (LED)","OLED","Plasma"])
+    .range(d3.schemeCategory10);
+
   // X scale
   const x = d3.scaleBand()
     .domain(data.map(d => d.Screen_Tech))
@@ -23,7 +28,7 @@ d3.csv("data/TV_most_Energy.csv").then(data => {
 
   // Y scale
   const y = d3.scaleLinear()
-    .domain([0, d3.max(data, d => d.energy)])
+    .domain([0, d3.max(data, d => d.energy) * 1.1])
     .range([height - margin.bottom, margin.top]);
 
   // X axis
@@ -59,7 +64,8 @@ d3.csv("data/TV_most_Energy.csv").then(data => {
     .attr("y", d => y(d.energy))
     .attr("width", x.bandwidth())
     .attr("height", d => height - margin.bottom - y(d.energy))
-    .attr("fill", "#4C78A8");
+    .attr("fill", d => color(d.Screen_Tech))
+    .attr("rx",4);
 
   // value labels
   svg.selectAll(".label")
@@ -71,7 +77,25 @@ d3.csv("data/TV_most_Energy.csv").then(data => {
     .attr("y", d => y(d.energy) - 5)
     .attr("text-anchor", "middle")
     .style("font-size","13px")
-    .text(d => d.energy);
+    .text(d => d.energy + " kWh");
+
+  // legend
+  const legend = svg.selectAll(".legend")
+    .data(color.domain())
+    .enter()
+    .append("g")
+    .attr("transform", (d,i)=>`translate(${width-130}, ${40 + i*25})`);
+
+  legend.append("rect")
+    .attr("width",15)
+    .attr("height",15)
+    .attr("fill", d=>color(d));
+
+  legend.append("text")
+    .attr("x",22)
+    .attr("y",12)
+    .text(d=>d)
+    .style("font-size","13px");
 
 });
 
