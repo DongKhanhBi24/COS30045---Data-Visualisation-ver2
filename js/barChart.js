@@ -98,5 +98,4 @@ d3.csv("data/TV_most_Energy.csv").then(data => {
     .style("font-size","13px");
 
 });
-
 })();
