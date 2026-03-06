@@ -84,8 +84,6 @@ d3.csv("data/Screen_Tech_TV.csv").then(data => {
             text.append("tspan")
                 .attr("font-weight", "bold")
                 .text(d.Screen_Tech);
-            text.append("tspan")
-                .text(`: ${d.count} (kWh/year)`);
         })
         .style("font-size","14px");
 });
