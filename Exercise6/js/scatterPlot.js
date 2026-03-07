@@ -9,11 +9,11 @@ innerChartS = svgS.append("g")
     .attr("transform",`translate(${margin.left},${margin.top})`)
 
 xScaleS
-    .domain(d3.extent(data,d=>d.star))
+    .domain([0, d3.max(data,d=>d.star)])
     .range([0,width-margin.left-margin.right])
 
 yScaleS
-    .domain(d3.extent(data,d=>d.energyConsumption))
+    .domain([0, d3.max(data,d=>d.energyConsumption)])
     .range([height-margin.top-margin.bottom,0])
 
 colorScale
@@ -45,19 +45,19 @@ innerChartS.append("g")
 
 // X label
 innerChartS.append("text")
-    .attr("x", width/2 + margin.left)
-    .attr("y", height + margin.top + 35)
+    .attr("x", width/2 + margin.left + 150)
+    .attr("y", height - margin.bottom)
     .attr("text-anchor","middle")
-    .style("font-size","12px")
+    .style("font-size","12=4px")
     .text("Star Rating")
 
 // Y label
 innerChartS.append("text")
     .attr("transform","rotate(-90)")
-    .attr("x", -height/2)
+    .attr("x", -height/2+margin.top)
     .attr("y", -50)
     .attr("text-anchor","middle")
-    .style("font-size","12px")
+    .style("font-size","14px")
     .text("Labeled Energy Consumption (kWh/year)")
 
 // Legend
