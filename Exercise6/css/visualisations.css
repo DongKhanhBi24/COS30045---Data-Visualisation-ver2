@@ -1,0 +1,11 @@
+svg{
+background:white;
+}
+
+.bar{
+fill:steelblue;
+}
+
+.bar:hover{
+fill:orange;
+}
