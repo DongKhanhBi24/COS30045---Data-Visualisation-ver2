@@ -12,5 +12,5 @@ d3.csv("data/Ex6_TVdata_cleaned.csv", d => ({
     console.log(data);
 
     drawHistogram(data);
-    // populateFilters(data);
+    populateFilters(data);
 })

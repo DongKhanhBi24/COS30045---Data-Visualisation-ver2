@@ -26,10 +26,29 @@ chart.selectAll(".bar")
     .attr("width",d=>xScale(d.x1)-xScale(d.x0)-1)
     .attr("height",d=>height - yScale(d.length))
 
+// X axis
 chart.append("g")
     .attr("transform",`translate(0,${height})`)
     .call(d3.axisBottom(xScale))
 
+// Y axis
 chart.append("g")
     .call(d3.axisLeft(yScale))
+
+// X axis label
+chart.append("text")
+    .attr("x", width / 2)
+    .attr("y", height + 40)
+    .attr("text-anchor", "middle")
+    .style("font-size", "14px")
+    .text("Labeled Energy Consumption (kWh/year)")
+
+// Y axis label
+chart.append("text")
+    .attr("transform","rotate(-90)")
+    .attr("x",-height / 2)
+    .attr("y",-45)
+    .attr("text-anchor","middle")
+    .style("font-size","14px")
+    .text("Frequency")
 }
