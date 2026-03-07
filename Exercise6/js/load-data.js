@@ -14,4 +14,7 @@ d3.csv("data/Ex6_TVdata_cleaned.csv", d => ({
     drawHistogram(data);
     drawScatterPlot(data);
     populateFilters(data);
+
+    createTooltip()
+    handleMouseEvents()
 })
