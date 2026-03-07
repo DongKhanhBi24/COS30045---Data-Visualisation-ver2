@@ -10,7 +10,7 @@ const svg = d3.select("#lineChart")
 
 const parseYear = d3.timeParse("%Y");
 
-d3.csv("data/Spot_prices.csv").then(data => {
+d3.csv("data/Spot_Prices.csv").then(data => {
 
   data.forEach(d => {
     d.year = parseYear(d.Year);
