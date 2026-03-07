@@ -1,0 +1,22 @@
+body{
+font-family: Arial;
+margin:40px;
+background:#f4f4f4;
+}
+
+#filters{
+margin-bottom:20px;
+}
+
+button{
+padding:8px 12px;
+margin-right:10px;
+border:none;
+background:#ddd;
+cursor:pointer;
+}
+
+button.active{
+background:#2c7be5;
+color:white;
+}
