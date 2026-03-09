@@ -33,7 +33,8 @@ chart.append("g")
 
 // Y axis
 chart.append("g")
-    .call(d3.axisLeft(yScale))
+  .attr("class","y-axis")
+  .call(d3.axisLeft(yScale));
 
 // X axis label
 chart.append("text")

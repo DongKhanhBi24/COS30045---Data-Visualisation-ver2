@@ -43,6 +43,10 @@ const bins=binGenerator(filteredData)
 // update y scale
 yScale.domain([0,d3.max(bins,d=>d.length)])
 
+chart.select(".y-axis")
+    .transition()
+    .duration(600)
+    .call(d3.axisLeft(yScale));
 // select existing bars
 const bars=chart.selectAll(".bar")
     .data(bins)
