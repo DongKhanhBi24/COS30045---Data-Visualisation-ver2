@@ -1,6 +1,6 @@
 const svg = d3.select(".responsive-svg-container")
     .append("svg")
-      .attr("viewBox", "0 0 500 1500")
+      .attr("viewBox", "0 0 500 350")
       .style("border", "1px solid black");
 svg
   .append("rect")
@@ -24,12 +24,14 @@ d3.csv("data/count_models_of_brands.csv", d => {
   console.log("Extent:", d3.extent(data, d => d.count));
   data.sort((a, b) => b.count - a.count);
 
-  createBarChart(data);
+  const top10 = data.slice(0, 10);
+
+  createBarChart(top10);
 });
 
 const createBarChart = (data) => {
   const leftPadding = 70;  // labels
-  const chartheight = 1450; 
+  const chartheight = data.length * 30; 
 
   const xScale = d3.scaleLinear() 
   .domain([0, d3.max(data, d => d.count)])
