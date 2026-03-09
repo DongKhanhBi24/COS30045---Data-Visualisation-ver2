@@ -7,7 +7,7 @@ const height = 400 - margin.top - margin.bottom
 let innerChartS
 
 // tooltip
-const tooltipWidth = 65
+const tooltipWidth = 270
 const tooltipHeight = 32
 
 // colours

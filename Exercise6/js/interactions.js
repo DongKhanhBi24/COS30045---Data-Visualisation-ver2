@@ -105,7 +105,7 @@ innerChartS.selectAll("circle")
 .on("mouseenter",(e,d)=>{
 
     d3.select(".tooltip text")
-        .text(d.screenSize)
+        .text(`${d.screenTech} | ${d.screenSize} inches | ${d.energyConsumption} kWh/year`)
 
     const cx = e.target.getAttribute("cx")
     const cy = e.target.getAttribute("cy")
@@ -116,15 +116,12 @@ innerChartS.selectAll("circle")
         .transition()
         .duration(200)
         .style("opacity",1)
-
 })
 
 .on("mouseleave",(e,d)=>{
-
     d3.select(".tooltip")
         .style("opacity",0)
         .attr("transform","translate(0,500)")
-
 })
 
 }

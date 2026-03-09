@@ -9,11 +9,11 @@ innerChartS = svgS.append("g")
     .attr("transform",`translate(${margin.left},${margin.top})`)
 
 xScaleS
-    .domain([0, d3.max(data,d=>d.star)])
+    .domain([0, d3.max(data,d=>d.star) + 2])
     .range([0,width-margin.left-margin.right])
 
 yScaleS
-    .domain([0, d3.max(data,d=>d.energyConsumption)])
+    .domain([0, d3.max(data,d=>d.energyConsumption)+500])
     .range([height-margin.top-margin.bottom,0])
 
 colorScale
